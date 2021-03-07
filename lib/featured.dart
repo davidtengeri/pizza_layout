@@ -5,9 +5,9 @@ import 'package:pizza_layout/pizza.dart';
 import 'pizza_card.dart';
 
 class Featured extends StatelessWidget {
-  final Pizza pizza;
+  final Pizza? pizza;
 
-  const Featured({Key key, this.pizza}) : super(key: key);
+  const Featured({Key? key, this.pizza}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,7 +64,7 @@ class Featured extends StatelessWidget {
               // Kép beillesztése az asset-ekből. Az, hogy milyen asset-ek
               // érhetőek el, a pubspec.yml fájlban mindig definiálni kell.
               child: Image.asset(
-                pizza.imagePath,
+                pizza!.imagePath!,
               ),
             ),
           ),
@@ -75,16 +75,16 @@ class Featured extends StatelessWidget {
 }
 
 class DashedCircle extends StatelessWidget {
-  final double diameter;
+  final double? diameter;
 
-  const DashedCircle({Key key, this.diameter}) : super(key: key);
+  const DashedCircle({Key? key, this.diameter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        top: (250 - diameter) / 2,
-        left: (250 - diameter) / 2,
+        top: (250 - diameter!) / 2,
+        left: (250 - diameter!) / 2,
       ),
       // A DottedBorder nem a Flutter-ben szereplő widget, hanem a pub.dev-en
       // egy harmadik féltől származó fejlesztés, amit a pubscpec.yml-ben meg
@@ -121,7 +121,7 @@ class RedBox extends StatelessWidget {
             blurRadius: 30,
           ),
           BoxShadow(
-            color: Colors.red[900].withOpacity(0.6),
+            color: Colors.red[900]!.withOpacity(0.6),
             spreadRadius: 2,
             offset: Offset(7, 7),
             blurRadius: 20,

@@ -29,7 +29,7 @@ class TodaySpecials extends StatelessWidget {
             width: 120,
             height: 120,
             margin: EdgeInsets.only(top: 35),
-            child: Image.asset(pizza.imagePath),
+            child: Image.asset(pizza.imagePath!),
           ),
         ],
       ),
