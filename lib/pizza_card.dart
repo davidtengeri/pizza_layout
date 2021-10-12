@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_layout/pizza_card/pizza_name.dart';
+import 'package:pizza_layout/pizza_card/price.dart';
+import 'package:pizza_layout/pizza_card/rating.dart';
 
 import 'pizza.dart';
+import 'pizza_card/add_to_cart_button.dart';
+import 'pizza_card/topping.dart';
 
 class PizzaCard extends StatelessWidget {
   final Pizza pizza;
@@ -45,12 +50,7 @@ class PizzaCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    pizza.name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  PizzaName(pizza: pizza),
                   Container(
                     padding: EdgeInsets.only(
                       top: 5,
@@ -58,62 +58,25 @@ class PizzaCard extends StatelessWidget {
                     ),
                     child: Row(
                       children: [
-                        Text(
-                          '\$${pizza.price}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        Price(pizza: pizza),
                         Padding(
                           padding: const EdgeInsets.only(
                             left: 10,
                           ),
-                          child: Row(
-                            children: [
-                              for (var i = 0; i < pizza.rating; i++)
-                                Icon(
-                                  Icons.star,
-                                  size: 15,
-                                  color: Colors.yellow[700],
-                                ),
-                              for (var i = 0; i < 5 - pizza.rating; i++)
-                                Icon(
-                                  Icons.star_border,
-                                  size: 15,
-                                  color: Colors.yellow[700],
-                                ),
-                            ],
-                          ),
+                          child: Rating(pizza: pizza),
                         )
                       ],
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
-                    child: Text(
-                      pizza.topping,
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                      ),
-                    ),
+                    child: Topping(pizza: pizza),
                   ),
                 ],
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text(
-              'Add to cart',
-            ),
-            style: ElevatedButton.styleFrom(
-                primary: Colors.red,
-                textStyle: TextStyle(
-                  color: Colors.white,
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30))),
-          ),
+          AddToCartButton(),
         ],
       ),
     );
