@@ -3,10 +3,14 @@ import 'package:flutter/material.dart';
 import 'pizza.dart';
 
 class PizzaCard extends StatelessWidget {
-  final Pizza? pizza;
+  final Pizza pizza;
   final EdgeInsetsGeometry? padding;
 
-  const PizzaCard({Key? key, this.pizza, this.padding}) : super(key: key);
+  const PizzaCard({
+    Key? key,
+    required this.pizza,
+    this.padding,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +46,7 @@ class PizzaCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    pizza!.name!,
+                    pizza.name,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
@@ -55,7 +59,7 @@ class PizzaCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          '\$${pizza!.price}',
+                          '\$${pizza.price}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -66,13 +70,13 @@ class PizzaCard extends StatelessWidget {
                           ),
                           child: Row(
                             children: [
-                              for (var i = 0; i < pizza!.rating!; i++)
+                              for (var i = 0; i < pizza.rating; i++)
                                 Icon(
                                   Icons.star,
                                   size: 15,
                                   color: Colors.yellow[700],
                                 ),
-                              for (var i = 0; i < 5 - pizza!.rating!; i++)
+                              for (var i = 0; i < 5 - pizza.rating; i++)
                                 Icon(
                                   Icons.star_border,
                                   size: 15,
@@ -87,7 +91,7 @@ class PizzaCard extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Text(
-                      pizza!.topping!,
+                      pizza.topping,
                       style: TextStyle(
                         color: Colors.grey[700],
                       ),
@@ -97,15 +101,18 @@ class PizzaCard extends StatelessWidget {
               ),
             ),
           ),
-          RaisedButton(
+          ElevatedButton(
             onPressed: () {},
             child: Text(
               'Add to cart',
             ),
-            color: Colors.red,
-            textColor: Colors.white,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            style: ElevatedButton.styleFrom(
+                primary: Colors.red,
+                textStyle: TextStyle(
+                  color: Colors.white,
+                ),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30))),
           ),
         ],
       ),

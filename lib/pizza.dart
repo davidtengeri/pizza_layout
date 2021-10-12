@@ -1,17 +1,17 @@
 // Egyszerű osztály az adatok öszefogására.
 class Pizza {
-  final String? name;
-  final String? topping;
-  final double? price;
-  final String? imagePath;
-  final int? rating;
+  final String name;
+  final String topping;
+  final double price;
+  final String imagePath;
+  final int rating;
 
   const Pizza({
-    this.name,
-    this.topping,
-    this.price,
-    this.imagePath,
-    this.rating,
+    required this.name,
+    required this.topping,
+    required this.price,
+    required this.imagePath,
+    required this.rating,
   });
 }
 
